@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('dckr_pat__FoW2XeXh4tNOxzqXE8thsKZOtU')
+        DOCKER_HUB_CREDENTIALS = credentials('dockerhubpass')
         AWS_ACCESS_KEY_ID = credentials('AKIAQJPRSKPXJJISHRDU')
         AWS_SECRET_ACCESS_KEY = credentials('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')
     }
