@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         DOCKER_HUB_CREDENTIALS = credentials('dockerhubpass')
-        AWS_ACCESS_KEY_ID = credentials('AKIAQJPRSKPXJJISHRDU')
-        AWS_SECRET_ACCESS_KEY = credentials('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')
+        AWS_ACCESS_KEY_ID = credentials('aws_access_key')
+        AWS_SECRET_ACCESS_KEY = credentials('aws_secret_key')
     }
 
     stages {
