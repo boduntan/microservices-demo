@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('Deploy to Kubernetes or EKS') {
             steps {
                 script {
                     // Apply Kubernetes manifest files for each microservice
