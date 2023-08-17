@@ -18,7 +18,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/adservice:${env.BUILD_ID}", "microservices-demo/src/adservice")
+                    docker.build("thecodegirl/adservice:${env.BUILD_ID}", "-f microservices-demo/src/adservice .")
 
                     //push to docker hub
                     
@@ -35,7 +35,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/cartservice:${env.BUILD_ID}", "microservices-demo/src/cartservice/src")
+                    docker.build("thecodegirl/cartservice:${env.BUILD_ID}", "-f microservices-demo/src/cartservice/src .")
 
                     //push to docker hub
                     
@@ -52,7 +52,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/checkoutservice:${env.BUILD_ID}", "microservices-demo/src/checkoutservice")
+                    docker.build("thecodegirl/checkoutservice:${env.BUILD_ID}", "-f microservices-demo/src/checkoutservice .")
 
                     //push to docker hub
                     
@@ -69,7 +69,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/currencyservice:${env.BUILD_ID}", "microservices-demo/src/currencyservice")
+                    docker.build("thecodegirl/currencyservice:${env.BUILD_ID}", "-f microservices-demo/src/currencyservice .")
 
                     //push to docker hub
                     
@@ -86,7 +86,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/emailservice:${env.BUILD_ID}", "microservices-demo/src/emailservice")
+                    docker.build("thecodegirl/emailservice:${env.BUILD_ID}", "-f microservices-demo/src/emailservice .")
 
                     //push to docker hub
                     
@@ -103,7 +103,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/frontend:${env.BUILD_ID}", "microservices-demo/src/frontend")
+                    docker.build("thecodegirl/frontend:${env.BUILD_ID}", "-f microservices-demo/src/frontend .")
 
                     //push to docker hub
                     
@@ -120,7 +120,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/loadgenerator:${env.BUILD_ID}", "microservices-demo/src/loadgenerator")
+                    docker.build("thecodegirl/loadgenerator:${env.BUILD_ID}", "-f microservices-demo/src/loadgenerator .")
 
                     //push to docker hub
                     
@@ -137,7 +137,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/paymentservice:${env.BUILD_ID}", "microservices-demo/src/paymentservice")
+                    docker.build("thecodegirl/paymentservice:${env.BUILD_ID}", "-f microservices-demo/src/paymentservice .")
 
                     //push to docker hub
                     
@@ -153,7 +153,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/productcatalogservice:${env.BUILD_ID}", "microservices-demo/src/productcatalogservice")
+                    docker.build("thecodegirl/productcatalogservice:${env.BUILD_ID}", "-f microservices-demo/src/productcatalogservice .")
 
                     //push to docker hub
                     
@@ -169,7 +169,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/recommendationservice:${env.BUILD_ID}", "microservices-demo/src/recommendationservice")
+                    docker.build("thecodegirl/recommendationservice:${env.BUILD_ID}", "-f microservices-demo/src/recommendationservice .")
 
                     //push to docker hub
                     
@@ -185,7 +185,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/shippingservice:${env.BUILD_ID}", "microservices-demo/src/shippingservice")
+                    docker.build("thecodegirl/shippingservice:${env.BUILD_ID}", "-f microservices-demo/src/shippingservice .")
 
                     //push to docker hub
                     
