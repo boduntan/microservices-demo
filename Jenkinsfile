@@ -18,7 +18,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/adservice:${env.BUILD_ID}", "-f microservices-demo/src/adservice/Dockerfile .")
+                    docker.build("thecodegirl/adservice:${env.BUILD_ID}", "-f ~/microservices-demo/src/adservice/Dockerfile ~/microservices-demo/src/adservice")
 
                     //push to docker hub
                     
