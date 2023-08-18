@@ -38,7 +38,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/cartservice:${env.BUILD_ID}", "-f /var/lib/jenkins/cartservice/src/Dockerfile /var/lib/jenkins/cartservice")
+                    docker.build("thecodegirl/cartservice:${env.BUILD_ID}", "-f /var/lib/jenkins/cartservice/src/Dockerfile /var/lib/jenkins/cartservice/src")
 
                     //push to docker hub
                     
