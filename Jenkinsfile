@@ -15,7 +15,7 @@ pipeline {
 	            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
 	            echo 'Login Completed'
                 }           
-} 
+            } 
                 script {
                     withCredentials([
                         usernamePassword(credentialsId: 'dockerid', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')
@@ -28,7 +28,6 @@ pipeline {
                     }
                 }
             }
-        }
         stage('Build adservice and push to dockerhub') {
             steps {
                 script {
