@@ -11,6 +11,11 @@ pipeline {
     stages {
         stage('Login to Docker Hub') {
             steps {
+                stage('Login to Docker Hub') {      	                      	
+	            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
+	            echo 'Login Completed'
+                }           
+} 
                 script {
                     withCredentials([
                         usernamePassword(credentialsId: 'dockerid', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')
@@ -18,7 +23,7 @@ pipeline {
                         def registryUrl = 'https://registry.hub.docker.com'
                         def dockerHubUsername = env.DOCKER_HUB_USERNAME
                         def dockerHubPassword = env.DOCKER_HUB_PASSWORD
-
+                        
                         sh "docker login -u ${dockerHubUsername} -p ${dockerHubPassword} ${registryUrl}"
                     }
                 }
