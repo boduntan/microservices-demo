@@ -7,15 +7,9 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_Secret_Key')
         
     }
-    
     stages {
         stage('Login to Docker Hub') {
             steps {
-                stage('Login to Docker Hub') {      	                      	
-	            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
-	            echo 'Login Completed'
-                }           
-            } 
                 script {
                     withCredentials([
                         usernamePassword(credentialsId: 'dockerid', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')
@@ -26,8 +20,12 @@ pipeline {
                         
                         sh "docker login -u ${dockerHubUsername} -p ${dockerHubPassword} ${registryUrl}"
                     }
-                }
+                     
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
+	            echo 'Login Completed'
+                }     	                      	  
             }
+        }
         stage('Build adservice and push to dockerhub') {
             steps {
                 script {
