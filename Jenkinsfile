@@ -11,20 +11,16 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                 script {
-                    withCredentials([
-                        usernamePassword(credentialsId: 'dockerid', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')
-                    ]) {
-                        def registryUrl = 'https://registry.hub.docker.com'
-                        def dockerHubUsername = env.DOCKER_HUB_USERNAME
-                        def dockerHubPassword = env.DOCKER_HUB_PASSWORD
-                        
-                        sh "docker login -u ${dockerHubUsername} -p ${dockerHubPassword} ${registryUrl}"
-                    }
-                     
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                		
-	            echo 'Login Completed'
-                }     	                      	  
-            }
+                        sh "echo ${DOCKER_HUB_ACCESS_TOKEN} | docker login -u ${DOCKER_HUB_USERNAME} --password-stdin"
+                    //withCredentials([
+                        //usernamePassword(credentialsId: 'dockerid', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')
+                    //]) {
+                        //def registryUrl = 'https://registry.hub.docker.com'
+                        //def dockerHubUsername = env.DOCKER_HUB_USERNAME
+                        //def dockerHubPassword = env.DOCKER_HUB_PASSWORD
+                        //sh "docker login -u ${dockerHubUsername} -p ${dockerHubPassword} ${registryUrl}"
+                }
+            }     	                      	  
         }
         stage('Build adservice and push to dockerhub') {
             steps {
@@ -33,10 +29,10 @@ pipeline {
                     checkout scm
                     docker.build("thecodegirl/adservice:${env.BUILD_ID}", "-f /var/lib/jenkins/adservice/Dockerfile /var/lib/jenkins/adservice")
                     
-                    //docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/adservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/adservice:${env.BUILD_ID}").push('latest')
-                   // }
+                    }
                 }
             }
         }
@@ -50,10 +46,10 @@ pipeline {
 
                     //push to docker hub
                     
-                    //docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/cartservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/cartservice:${env.BUILD_ID}").push('latest')
-                    //}
+                    }
                 }
             }
         }
@@ -67,10 +63,10 @@ pipeline {
 
                     //push to docker hub
                     
-                    //docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/checkoutservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/checkoutservice:${env.BUILD_ID}").push('latest')
-                    //}
+                    }
                 }
             }
         }
@@ -84,10 +80,10 @@ pipeline {
 
                     //push to docker hub
                     
-                   // docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/currencyservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/currencyservice:${env.BUILD_ID}").push('latest')
-                   // }
+                    }
                 }
             }
         }
@@ -101,7 +97,7 @@ pipeline {
 
                     //push to docker hub
                     
-                   // docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/emailservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/emailservice:${env.BUILD_ID}").push('latest')
                    // }
@@ -118,10 +114,10 @@ pipeline {
 
                     //push to docker hub
                     
-                    //docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/frontendservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/frontend:${env.BUILD_ID}").push('latest')
-                    //}
+                    }
                 }
             }
         }
@@ -135,10 +131,10 @@ pipeline {
 
                     //push to docker hub
                     
-                    //docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/loadgenerator:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/loadgenerator:${env.BUILD_ID}").push('latest')
-                   // }
+                    }
                 }
             }
         }
@@ -152,10 +148,10 @@ pipeline {
 
                     //push to docker hub
                     
-                    //docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/paymentservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/paymentservice:${env.BUILD_ID}").push('latest')
-                    //}
+                    }
                 }
             }
         }
@@ -168,10 +164,10 @@ pipeline {
 
                     //push to docker hub
                     
-                    //docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/productcatalogservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/productcatalogservice:${env.BUILD_ID}").push('latest')
-                    //}
+                    }
                 }
             }
         }
@@ -184,10 +180,10 @@ pipeline {
 
                     //push to docker hub
                     
-                    //docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/recommendationservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/recommendationservice:${env.BUILD_ID}").push('latest')
-                    //}
+                    }
                 }
             }
         }
@@ -200,10 +196,10 @@ pipeline {
 
                     //push to docker hub
                     
-                    //docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/shippingservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/shippingservice:${env.BUILD_ID}").push('latest')
-                    //}
+                    }
                 }
             }
         }
