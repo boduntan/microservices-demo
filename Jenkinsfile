@@ -7,7 +7,8 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_Secret_Key')
         
     }
-     stages {
+    
+    stages {
         stage('Print Credentials') {
             steps {
                 script {
@@ -15,8 +16,6 @@ pipeline {
                 }
             }
         }
-    }
-    stages {
         //stage('Checkout') {
         //   steps {
         //        checkout scm
