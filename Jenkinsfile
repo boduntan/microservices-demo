@@ -22,7 +22,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/adservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/adservice:${env.BUILD_ID}").push('latest')
                     }
@@ -39,7 +39,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/cartservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/cartservice:${env.BUILD_ID}").push('latest')
                     }
@@ -56,7 +56,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/checkoutservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/checkoutservice:${env.BUILD_ID}").push('latest')
                     }
@@ -73,7 +73,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/currencyservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/currencyservice:${env.BUILD_ID}").push('latest')
                     }
@@ -90,7 +90,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/emailservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/emailservice:${env.BUILD_ID}").push('latest')
                     }
@@ -107,7 +107,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/frontendservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/frontend:${env.BUILD_ID}").push('latest')
                     }
@@ -124,7 +124,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/loadgenerator:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/loadgenerator:${env.BUILD_ID}").push('latest')
                     }
@@ -141,7 +141,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/paymentservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/paymentservice:${env.BUILD_ID}").push('latest')
                     }
@@ -157,7 +157,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/productcatalogservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/productcatalogservice:${env.BUILD_ID}").push('latest')
                     }
@@ -173,7 +173,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/recommendationservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/recommendationservice:${env.BUILD_ID}").push('latest')
                     }
@@ -189,7 +189,7 @@ pipeline {
 
                     //push to docker hub
                     
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_HUB_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_HUB_CREDENTIALS) {
                         docker.image("thecodegirl/shippingservice:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/shippingservice:${env.BUILD_ID}").push('latest')
                     }
