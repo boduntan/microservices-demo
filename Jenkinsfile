@@ -2,27 +2,20 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('Docker_Hub_Access_Key')
+        DOCKER_HUB_CREDENTIALS = credentials('dockerid')
         AWS_ACCESS_KEY_ID = credentials('AWS_Access_Key')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_Secret_Key')
         DOCKER_HUB_CREDENTIALS_USERNAME = 'oduntanbola@gmail.com'
         
     }
     stages {
-        stage('Login to Docker Hub') {
-            steps {
-                script {
-                        sh "echo ${DOCKER_HUB_CREDENTIALS} | docker login -u ${DOCKER_HUB_CREDENTIALS_USERNAME} --password-stdin"
-                    //withCredentials([
-                        //usernamePassword(credentialsId: 'dockerid', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')
-                    //]) {
-                        //def registryUrl = 'https://registry.hub.docker.com'
-                        //def dockerHubUsername = env.DOCKER_HUB_USERNAME
-                        //def dockerHubPassword = env.DOCKER_HUB_PASSWORD
-                        //sh "docker login -u ${dockerHubUsername} -p ${dockerHubPassword} ${registryUrl}"
-                }
-            }     	                      	  
-        }
+        //stage('Login to Docker Hub') {
+            //steps {
+               // script {
+                        //sh "echo ${DOCKER_HUB_CREDENTIALS} | docker login -u ${DOCKER_HUB_CREDENTIALS_USERNAME} --password-stdin"
+                //}
+            //}     	                      	  
+        //}
         stage('Build adservice and push to dockerhub') {
             steps {
                 script {
