@@ -7,7 +7,15 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_Secret_Key')
         
     }
-
+     stages {
+        stage('Print Credentials') {
+            steps {
+                script {
+                    echo "DOCKER_HUB_CREDENTIALS: ${DOCKER_HUB_CREDENTIALS}"
+                }
+            }
+        }
+    }
     stages {
         //stage('Checkout') {
         //   steps {
