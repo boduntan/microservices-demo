@@ -219,7 +219,7 @@ pipeline {
                         $class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY'
                         ]]) {
                         sh "aws eks --region us-east-1 update-kubeconfig --name eks-cluster"
-                        sh "kubectl apply -f var/lib/jenkins/kubernetes-manifests.yaml"
+                        sh "kubectl apply -f /var/lib/jenkins/kubernetes-manifests.yaml"
                     }
                 }
             }
