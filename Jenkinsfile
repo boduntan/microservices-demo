@@ -229,13 +229,16 @@ pipeline {
             steps {
                 script {
                     def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'redis-cart', 'shippingservice' ]
+                    def dockerImageTag = env.BUILD_ID
                     microservices.each { microserviceName ->
-                        kubeConfig = readFile("${HOME}/.kube/config")
+                        //kubeConfig = readFile("${HOME}/.kube/config")
+                        def kubeDeploymentName = "${microserviceName}"
+                        def dockerImageName = "thecodegirl/${microserviceName}:${dockerImageTag}"
                         sh """
                         echo 'Running kubectl command for ${microserviceName}'
                         echo '$kubeConfig' > kubeconfig.yaml
-                        kubectl set image deployment/${microservices} ${microservices}=thecodegirl/${microservices}:${env.BUILD_ID}
-                        kubectl rollout restart deployment/${microservices}-deployment
+                        kubectl set image deployment/${kubeDeploymentName} ${kubeDeploymentName}=def dockerImageTag
+                        kubectl rollout restart deployment/${kubeDeploymentName}-deployment
                         """
                     }
                 }
