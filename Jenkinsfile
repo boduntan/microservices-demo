@@ -90,7 +90,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/emailservice:${env.BUILD_ID}", "-f /var/lib/jenkins/emailservice/Dockerfile /var/lib/jenkins/emailservice")
+                    docker.build("thecodegirl/emailservice:${env.BUILD_ID}", "-f /var/lib/jenkins/emailservice/Dockerfile emailservice")
 
                     //push to docker hub
                     
@@ -107,7 +107,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/frontend:${env.BUILD_ID}", "-f /var/lib/jenkins/frontend/Dockerfile /var/lib/jenkins/frontend")
+                    docker.build("thecodegirl/frontend:${env.BUILD_ID}", "-f /var/lib/jenkins/frontend/Dockerfile frontend")
 
                     //push to docker hub
                     
@@ -124,7 +124,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/loadgenerator:${env.BUILD_ID}", "-f /var/lib/jenkins/loadgenerator/Dockerfile /var/lib/jenkins/loadgenerator")
+                    docker.build("thecodegirl/loadgenerator:${env.BUILD_ID}", "-f /var/lib/jenkins/loadgenerator/Dockerfile loadgenerator")
 
                     //push to docker hub
                     
@@ -141,7 +141,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/paymentservice:${env.BUILD_ID}", "-f /var/lib/jenkins/paymentservice/Dockerfile /var/lib/jenkins/paymentservice")
+                    docker.build("thecodegirl/paymentservice:${env.BUILD_ID}", "-f /var/lib/jenkins/paymentservice/Dockerfile paymentservice")
 
                     //push to docker hub
                     
@@ -157,7 +157,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/productcatalogservice:${env.BUILD_ID}", "-f /var/lib/jenkins/productcatalogservice/Dockerfile /var/lib/jenkins/productcatalogservice")
+                    docker.build("thecodegirl/productcatalogservice:${env.BUILD_ID}", "-f /var/lib/jenkins/productcatalogservice/Dockerfile productcatalogservice")
 
                     //push to docker hub
                     
@@ -173,7 +173,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/recommendationservice:${env.BUILD_ID}", "-f /var/lib/jenkins/recommendationservice/Dockerfile /var/lib/jenkins/recommendationservice")
+                    docker.build("thecodegirl/recommendationservice:${env.BUILD_ID}", "-f /var/lib/jenkins/recommendationservice/Dockerfile recommendationservice")
 
                     //push to docker hub
                     
@@ -189,7 +189,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/shippingservice:${env.BUILD_ID}", "-f /var/lib/jenkins/shippingservice/Dockerfile /var/lib/jenkins/shippingservice")
+                    docker.build("thecodegirl/shippingservice:${env.BUILD_ID}", "-f /var/lib/jenkins/shippingservice/Dockerfile shippingservice")
 
                     //push to docker hub
                     
