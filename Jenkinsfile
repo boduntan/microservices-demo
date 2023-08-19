@@ -228,7 +228,7 @@ pipeline {
         stage('Rollout Deployment') {
             steps {
                 script {
-                    def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'redis-cart', 'shippingservice' ]
+                    def microservices = ['server', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'redis-cart', 'shippingservice' ]
                     microservices.each { microserviceName ->
                         //def kubeDeploymentName = "${microserviceName}-deployment"
                         //def kubeAppLabel = "app=${microserviceName}"
