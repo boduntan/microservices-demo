@@ -231,7 +231,7 @@ pipeline {
                     def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'redis-cart', 'shippingservice' ]
                     def dockerImageTag = env.BUILD_ID
                     microservices.each { microserviceName ->
-                        //kubeConfig = readFile("${HOME}/.kube/config")
+                        kubeConfig = readFile("${HOME}/.kube/config")
                         def kubeDeploymentName = "${microserviceName}"
                         def dockerImageName = "thecodegirl/${microserviceName}:${dockerImageTag}"
                         sh """
