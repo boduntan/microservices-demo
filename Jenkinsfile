@@ -228,7 +228,7 @@ pipeline {
         stage('Rollout Deployment') {
             steps {
                 script {
-                    def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'redis-cart', 'shippingservice' ]
+                    def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'redis-cart', 'shippingservice' ]{
                     //microservices.each { microserviceName ->
                         kubeConfig = readFile("${HOME}/.kube/config")
                         sh """
