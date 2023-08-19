@@ -228,16 +228,14 @@ pipeline {
         stage('Rollout Deployment') {
             steps {
                 script {
-                    def microservices = ['server', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'redis-cart', 'shippingservice' ]
-                    microservices.each { microserviceName ->
-                        //def kubeDeploymentName = "${microserviceName}-deployment"
-                        //def kubeAppLabel = "app=${microserviceName}"
+                    def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'redis-cart', 'shippingservice' ]
+                    //microservices.each { microserviceName ->
                         kubeConfig = readFile("${HOME}/.kube/config")
                         sh """
                         echo 'Running kubectl command for ${microserviceName}'
                         echo '$kubeConfig' > kubeconfig.yaml
-                        kubectl set image deployment/${microserviceName} ${microserviceName}=thecodegirl/${microserviceName}:${env.BUILD_ID}
-                        kubectl rollout restart deployment/${microserviceName}-deployment
+                        kubectl set image deployment/${microservices} ${microservices}=thecodegirl/${microservices}:${env.BUILD_ID}
+                        kubectl rollout restart deployment/${microservices}-deployment
                         """
                     }
                 }
