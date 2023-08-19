@@ -236,6 +236,8 @@ pipeline {
 
                         kubeConfig = readFile("${HOME}/.kube/config")
                         sh """
+                        echo 'Running kubectl command for ${microserviceName}'
+                        echo 'Running kubectl command for ${kubeDeploymentName}'
                         echo '$kubeConfig' > kubeconfig.yaml
                         kubectl set image deployment/${kubeDeploymentName} ${kubeDeploymentName}=thecodegirl/${microserviceName}:${env.BUILD_ID}
                         kubectl rollout restart deployment/${kubeDeploymentName}
