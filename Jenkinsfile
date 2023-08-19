@@ -1,3 +1,4 @@
+@Library('github.com/releaseworks/jenkinslib') _
 pipeline {
     agent any
 
@@ -214,10 +215,9 @@ pipeline {
         stage('Deploy to Amazon EKS') {
             steps {
                 script {
-                    withCredentials([
-                        string(credentialsId: aws-access-key-id, variable: AWS_ACCESS_KEY_ID),
-                        string(credentialsId: aws-secret-access-key, variable: AWS_SECRET_ACCESS_KEY)
-                    ]) {
+                    withCredentials([[
+                        $class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY'
+                        ]]) {
                         sh "aws eks --region us-east-1 update-kubeconfig --name eks-cluster"
                         sh "kubectl apply -f ~/microservices-demo/release/kubernetes-manifests.yaml"
                     }
