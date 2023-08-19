@@ -111,7 +111,7 @@ pipeline {
                     //push to docker hub
                     
                     docker.withRegistry('https://registry.hub.docker.com', DOCKER_HUB_CREDENTIALS) {
-                        docker.image("thecodegirl/frontendservice:${env.BUILD_ID}").push()
+                        docker.image("thecodegirl/frontend:${env.BUILD_ID}").push()
                         docker.image("thecodegirl/frontend:${env.BUILD_ID}").push('latest')
                     }
                 }
