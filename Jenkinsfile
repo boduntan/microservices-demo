@@ -106,7 +106,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/frontend:${env.BUILD_ID}", "--f /var/lib/jenkins/frontend/Dockerfile /var/lib/jenkins/frontend")
+                    docker.build("thecodegirl/frontend:${env.BUILD_ID}", "-f /var/lib/jenkins/frontend/Dockerfile /var/lib/jenkins/frontend")
 
                     //push to docker hub
                     
