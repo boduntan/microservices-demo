@@ -228,21 +228,22 @@ pipeline {
         stage('Rollout Deployment') {
             steps {
                 script {
-                    def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'redis-cart', 'shippingservice' ]
-                    def dockerImageTag = env.BUILD_ID
+                    def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'shippingservice']
                     microservices.each { microserviceName ->
-                        kubeConfig = readFile("${HOME}/.kube/config")
-                        def kubeDeploymentName = "${microserviceName}"
-                        def dockerImageName = "thecodegirl/${microserviceName}:${dockerImageTag}"
-                        sh """
-                        echo 'Running kubectl command for ${microserviceName}'
-                        echo '$kubeConfig' > kubeconfig.yaml
-                        kubectl set image deployment/${kubeDeploymentName} ${kubeDeploymentName}=dockerImageName
-                        kubectl rollout restart deployment/${kubeDeploymentName}-deployment
-                        """
-                    }
-                }
+                    def kubeDeploymentName = "${microserviceName}"
+                    //def imageTag = "your_image_tag_here"
+
+                    kubeConfig = readFile("${HOME}/.kube/config")
+                    sh """
+                    echo 'Running kubectl command for ${microserviceName}'
+                    echo 'Running kubectl command for ${kubeDeploymentName}'
+                    echo '$kubeConfig' > kubeconfig.yaml
+                    kubectl set image deployment/${kubeDeploymentName} ${microserviceName}=thecodegirl/${microserviceName}:${env.BUILD_ID}"
+                    """
             }
         }
+    }
+}
+
     }
 }
