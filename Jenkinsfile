@@ -241,7 +241,7 @@ pipeline {
                     kubectl set image deployment/checkoutservice server=thecodegirl/checkoutservice:${env.BUILD_ID}
                     kubectl set image deployment/currencyservice server=thecodegirl/currencyservice:${env.BUILD_ID}
                     kubectl set image deployment/emailservice server=thecodegirl/emailservice:${env.BUILD_ID}
-                    kubectl set image deployment/frontend main=thecodegirl/frontend:${env.BUILD_ID}
+                    kubectl set image deployment/frontend frontend-check=thecodegirl/frontend:${env.BUILD_ID}
                     kubectl set image deployment/loadgenerator server=thecodegirl/loadgenerator:${env.BUILD_ID}
                     kubectl set image deployment/paymentservice server=thecodegirl/paymentservice:${env.BUILD_ID}
                     kubectl set image deployment/productcatalogservice server=thecodegirl/productcatalogservice:${env.BUILD_ID}
