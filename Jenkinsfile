@@ -237,7 +237,7 @@ pipeline {
                         sh """
                         echo 'Running kubectl command for ${microserviceName}'
                         echo '$kubeConfig' > kubeconfig.yaml
-                        kubectl set image deployment/${kubeDeploymentName} ${kubeDeploymentName}=def dockerImageTag
+                        kubectl set image deployment/${kubeDeploymentName} ${kubeDeploymentName}=dockerImageName
                         kubectl rollout restart deployment/${kubeDeploymentName}-deployment
                         """
                     }
