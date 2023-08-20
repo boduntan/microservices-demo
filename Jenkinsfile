@@ -240,10 +240,10 @@ pipeline {
                     echo '$kubeConfig' > kubeconfig.yaml
                     kubectl set image deployment/${kubeDeploymentName} ${microserviceName}=thecodegirl/${microserviceName}:${env.BUILD_ID}"
                     """
+                    }
+                }
             }
         }
-    }
-}
 
     }
 }
