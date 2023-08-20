@@ -238,7 +238,7 @@ pipeline {
                     echo 'Running kubectl command for ${microserviceName}'
                     echo 'Running kubectl command for ${kubeDeploymentName}'
                     echo '$kubeConfig' > kubeconfig.yaml
-                    kubectl set image deployment/${kubeDeploymentName} ${microserviceName}=thecodegirl/${microserviceName}:${env.BUILD_ID}"
+                    kubectl set image deployment/${kubeDeploymentName} ${microserviceName}=thecodegirl/${microserviceName}:${env.BUILD_ID}
                     """
                     }
                 }
