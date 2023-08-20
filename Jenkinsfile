@@ -228,19 +228,26 @@ pipeline {
         stage('Rollout Deployment') {
             steps {
                 script {
-                    def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'shippingservice']
-                    microservices.each { microserviceName ->
-                    def kubeDeploymentName = "${microserviceName}"
+                    //def microservices = ['adservice', 'cartservice', 'checkoutservice', 'currencyservice', 'emailservice', 'frontend', 'loadgenerator', 'paymentservice', 'productcatalogservice', 'recommendationservice', 'shippingservice']
+                    //microservices.each { microserviceName ->
+                    //def kubeDeploymentName = "${microserviceName}"
                     //def imageTag = "your_image_tag_here"
 
                     kubeConfig = readFile("${HOME}/.kube/config")
                     sh """
-                    echo 'Running kubectl command for ${microserviceName}'
-                    echo 'Running kubectl command for ${kubeDeploymentName}'
                     echo '$kubeConfig' > kubeconfig.yaml
-                    kubectl set image deployment/${kubeDeploymentName} ${microserviceName}=thecodegirl/${microserviceName}:${env.BUILD_ID}
+                    kubectl set image deployment/adservice server=thecodegirl/adservice:${env.BUILD_ID}
+                    kubectl set image deployment/cartservice server=thecodegirl/cartservice:${env.BUILD_ID}
+                    kubectl set image deployment/checkoutservice server=thecodegirl/checkoutservice:${env.BUILD_ID}
+                    kubectl set image deployment/currencyservice server=thecodegirl/currencyservice:${env.BUILD_ID}
+                    kubectl set image deployment/emailservice server=thecodegirl/emailservice:${env.BUILD_ID}
+                    kubectl set image deployment/frontend main=thecodegirl/frontend:${env.BUILD_ID}
+                    kubectl set image deployment/loadgenerator server=thecodegirl/loadgenerator:${env.BUILD_ID}
+                    kubectl set image deployment/paymentservice server=thecodegirl/paymentservice:${env.BUILD_ID}
+                    kubectl set image deployment/productcatalogservice server=thecodegirl/productcatalogservice:${env.BUILD_ID}
+                    kubectl set image deployment/recommendationservice server=thecodegirl/recommendationservice:${env.BUILD_ID}
+                    kubectl set image deployment/shippingservice server=thecodegirl/shippingservice:${env.BUILD_ID}
                     """
-                    }
                 }
             }
         }
