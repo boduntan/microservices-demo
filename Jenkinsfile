@@ -56,7 +56,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/checkoutservice:${env.BUILD_ID}", "-f /var/lib/jenkins/checkout/Dockerfile /var/lib/jenkins/checkoutservice")
+                    docker.build("thecodegirl/checkoutservice:${env.BUILD_ID}", "-f /var/lib/jenkins/checkoutservice/Dockerfile /var/lib/jenkins/checkoutservice")
 
                     //push to docker hub
                     
@@ -73,7 +73,7 @@ pipeline {
                 script {
                     //build adservice
                     checkout scm
-                    docker.build("thecodegirl/currencyservice:${env.BUILD_ID}", "-f /var/lib/jenkins/currency/Dockerfile /var/lib/jenkins/currencyservice")
+                    docker.build("thecodegirl/currencyservice:${env.BUILD_ID}", "-f /var/lib/jenkins/currencyservice/Dockerfile /var/lib/jenkins/currencyservice")
 
                     //push to docker hub
                     
