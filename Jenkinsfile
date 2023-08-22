@@ -220,6 +220,7 @@ pipeline {
                         ]]) {
                         sh "aws eks --region us-east-1 update-kubeconfig --name eks-cluster"
                         sh "kubectl apply -f /var/lib/jenkins/kubernetes-manifests.yaml"
+                        sh "kubectl apply -f /var/lib/jenkins/production_issuer.yaml"
                     }
                 }
             }
