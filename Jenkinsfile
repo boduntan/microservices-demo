@@ -256,18 +256,18 @@ pipeline {
                 script {
                     // Use kubectl to trigger a rolling restart of the deployment
                     sh """
-                    kubectl rollout restart deployment.apps/adservice
-                    kubectl rollout restart deployment.apps/cartservice
-                    kubectl rollout restart deployment.apps/checkoutservice
-                    kubectl rollout restart deployment.apps/currencyservice
-                    kubectl rollout restart deployment.apps/emailservice
-                    kubectl rollout restart deployment.apps/frontend
-                    kubectl rollout restart deployment.apps/loadgenerator
-                    kubectl rollout restart deployment.apps/paymentservice
-                    kubectl rollout restart deployment.apps/productcatalogservice
-                    kubectl rollout restart deployment.apps/recommendationservice
-                    kubectl rollout restart deployment.apps/redis-cart
-                    kubectl rollout restart deployment.apps/shippingservice
+                    kubectl rollout restart deployment.apps/adservice:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/cartservice:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/checkoutservice:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/currencyservice:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/emailservice:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/frontend:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/loadgenerator:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/paymentservice:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/productcatalogservice:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/recommendationservice:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/redis-cart:${env.BUILD_ID}
+                    kubectl rollout restart deployment.apps/shippingservice:${env.BUILD_ID}
                     """
                 }
             }
