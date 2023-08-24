@@ -262,7 +262,7 @@ pipeline {
                     kubectl rollout restart deployment.apps/currencyservice
                     kubectl rollout restart deployment.apps/emailservice
                     kubectl rollout restart deployment.apps/frontend
-                    kubectl rollout restart deployment.apps/loadgeerator
+                    kubectl rollout restart deployment.apps/loadgenerator
                     kubectl rollout restart deployment.apps/paymentservice
                     kubectl rollout restart deployment.apps/productcatalogservice
                     kubectl rollout restart deployment.apps/recommendationservice
