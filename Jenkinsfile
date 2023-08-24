@@ -225,7 +225,6 @@ pipeline {
                 }
             }
         }
-//i dont know
         stage('Rollout Deployment') {
             steps {
                 script {
@@ -252,6 +251,26 @@ pipeline {
                 }
             }
         }
-
+        stage('Restart Pods') {
+            steps {
+                script {
+                    // Use kubectl to trigger a rolling restart of the deployment
+                    sh """
+                    kubectl rollout restart deployment.apps/adservice
+                    kubectl rollout restart deployment.apps/cartservice
+                    kubectl rollout restart deployment.apps/checkoutservice
+                    kubectl rollout restart deployment.apps/currencyservice
+                    kubectl rollout restart deployment.apps/emailservice
+                    kubectl rollout restart deployment.apps/frontend
+                    kubectl rollout restart deployment.apps/loadgeerator
+                    kubectl rollout restart deployment.apps/paymentservice
+                    kubectl rollout restart deployment.apps/productcatalogservice
+                    kubectl rollout restart deployment.apps/recommendationservice
+                    kubectl rollout restart deployment.apps/redis-cart
+                    kubectl rollout restart deployment.apps/shippingservice
+                    """
+                }
+            }
+        }
     }
 }
