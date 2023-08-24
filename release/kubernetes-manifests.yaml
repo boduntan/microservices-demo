@@ -314,7 +314,6 @@ kind: Service
 metadata:
   name: frontend-external
 spec:
-  replicas: 2
   type: LoadBalancer
   selector:
     app: frontend
