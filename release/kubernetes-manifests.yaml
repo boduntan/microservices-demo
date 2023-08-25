@@ -332,10 +332,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - bbmayor.co
+    - project.bbmayor.co
     secretName: hello-kubernetes-tls
   rules:
-  - host: "bbmayor.co"
+  - host: "project.bbmayor.co"
     http:
       paths:
       - pathType: Prefix
