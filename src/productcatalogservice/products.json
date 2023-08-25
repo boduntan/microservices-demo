@@ -14,15 +14,15 @@
         },
         {
             "id": "66VCHSJNUP",
-            "name": "Tank Top",
-            "description": "Perfectly cropped cotton tank, with a scooped neckline.",
-            "picture": "/static/img/products/tank-top.jpg",
+            "name": "Summer Dress",
+            "description": "Perfect flowery dress for a sunny day.",
+            "picture": "/static/img/products/flowery-dress.jpg",
             "priceUsd": {
                 "currencyCode": "USD",
-                "units": 18,
+                "units": 30,
                 "nanos": 990000000
             },
-            "categories": ["clothing", "tops"]
+            "categories": ["clothing", "dress"]
         },
         {
             "id": "1YMWWN1N4O",
